@@ -1,0 +1,27 @@
+{% extends "base.html" %} {% block content %}
+<form method="POST" action="{{ url_for('login') }}">
+    <h2 class="mt-5 text-center">Login Here</h2>
+    <div class="form-group mt-3 ">
+        <label for="username">User Name</label>
+        <input type="username" class="form-control" id="username" name="username" autocomplete="off">
+        <small id="username" class="form-text text-muted">We'll never share your details with anyone else.</small>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+    </div>
+
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary">Log In</button>
+    </div>
+</form>
+
+<div class="row text-center">
+    <div class="col-sm-12 mt-3">
+        <p class="center-align">
+            Want To Register ?
+            <a href="{{ url_for('register') }}" class="light-blue-text text-darken-4">Get Registered</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

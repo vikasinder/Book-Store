@@ -1,0 +1,88 @@
+{% extends "base.html" %} {% block content %}
+<h2 class="mt-5 text-center">New Book Insert</h2>
+
+<form method="POST" action="{{ url_for('admin_book_insert') }}" enctype="multipart/form-data">
+    <div class="form-row mt-3">
+        <div class="form-group col-md-4">
+            <label for="book_title">Book Title</label>
+            <input type="text" name="book_title" class="form-control" id="book_title" required>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="publisher_name">Book Publisher Name </label>
+            <select id="publisher_name" name="publisher_name" class="validate" required>
+              <option value="" disabled selected>Choose Publisher Name</option>
+              {% for publisher in publishers %}
+                  <option value="{{ publisher._id }}">{{ publisher.publisher_name }}</option>
+              {% endfor %}
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="author_name">Book Author Name </label>
+            <select id="author_name" name="author_name" class="validate" required>
+            <option value="" disabled selected>Choose Author Name</option>
+            {% for author in authors %}
+                <option value="{{ author._id }}">{{ author.author_name }}</option>
+            {% endfor %}
+        </select>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="caterory_name">Book Category </label>
+            <select id="category_name" name="category_name" class="validate" required>
+          <option value="" disabled selected>Choose Category Name</option>
+          {% for category in cat %}
+              <option value="{{ category._id }}">{{ category.category_name }}</option>
+          {% endfor %}
+      </select>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="book_availabilty">Book Availability </label>
+            <select id="book_availabilty" name="book_availabilty" class="validate" required>
+        <option value="" disabled selected>Book Availabilty</option>
+            <option value="yes">Yes</option>
+            <option value="No">No</option>
+                </select>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="book_discount">Book Percent Discount </label>
+            <select id="book_discount" name="book_discount" class="validate" required>
+      <option value="" disabled selected>Book Discount</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="30">30</option>
+          <option value="40">40</option>
+          <option value="50">50</option>
+          <option value="60">60</option>
+          <option value="70">70</option>
+          <option value="80">80</option>
+          <option value="90">90</option>
+          
+        </select>
+        </div>
+
+        <div class="form-group col-md-4">
+            <label for="book_best_selling">Is This Book A Best Selling </label>
+            <select id="book_best_selling" name="book_best_selling" class="validate" required>
+                <option value="" disabled selected>Best Selling</option>
+                <option value="yes">Yes</option>
+                <option value="No">No</option>
+             </select>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="book_price">Book Price</label>
+            <input type="text" class="form-control" name="book_price" id="book_price" required autocomplete="off">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="book_pages">Book Pages</label>
+            <input type="text" class="form-control" id="book_pages" name="book_pages" required autocomplete="off">
+        </div>
+        <div>
+            <input type="file" name="file" class="form-control" autocomplete="off" required>
+        </div>
+    </div>
+    <div class="form-group text-center mt-4">
+        <button type="submit" class="btn btn-primary">Insert Book</button>
+    </div>
+</form>
+
+
+{% endblock %}

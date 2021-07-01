@@ -1,0 +1,39 @@
+{% extends "base.html" %} {% block content %}
+<div class="row class-container">
+    <div class="col-12">
+        <div class="text-center my-3" style="font-family: 'Engagement', cursive;
+        font-size: 32px;">
+            <h2>List Of All Authors </h2>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Author Name</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if session.role|lower=="admin" %} {% for value in author %}
+                <tr>
+                    <td><b>{{value.author_name}}</b></td>
+
+                    <td>
+                        <a href="{{ url_for('delete_author', author_id=value._id) }}"><i class="far fa-trash-alt"></i>Delete</a>
+
+                    </td>
+
+                </tr>
+                {% endfor %} {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row text-center">
+    <div class="col-sm-12 mt-3">
+        <p class="center-align">
+            Add a Author ?
+            <a href="{{ url_for('authorregister') }}" class="light-blue-text text-darken-4">Add Author</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

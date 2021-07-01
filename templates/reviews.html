@@ -1,0 +1,35 @@
+{% extends "base.html" %} {% block content %}
+<div class="row class-container">
+    <div class="col-12">
+        <div class="text-center my-3" style="font-family: 'Engagement', cursive;
+        font-size: 32px;">
+            {{name}}
+            <h2>Book Reviews </h2>
+            <div class="icon-box  text-center ">
+                <h5 style="font-family: 'Engagement', cursive;
+                font-size: 32px;">{{ book_id.book_title}}</h5>
+                <img src="{{ url_for('static', filename= book_id.book_img ) }}" alt="Image" style="height: 150px;width: 150px;">
+                <div class="text-center m-auto">
+                    <table class="table mt-3">
+
+                        {% for value in reveiewd_book %}
+                        <tbody>
+                            <tr>
+                                <td><b>Reviewed By: -{{ value.reviewed_by}}</b> - {{value.book_review }}</td>
+
+                            </tr>
+                        </tbody>
+                        {% endfor %}
+                    </table>
+
+                </div>
+            </div>
+
+
+
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base.html" %} {% block content %}
+<div class="row class-container">
+    <div class="col-12">
+        <div class="text-center my-3" style="font-family: 'Engagement', cursive;
+        font-size: 32px;">
+            <h2>List Of All Books </h2>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Book Name</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if session.role|lower=="admin" %} {% for value in book %}
+                <tr>
+                    <td><b>{{value.book_title}}</b></td>
+
+                    <td>
+                        <a href="{{ url_for('book_update', book_id=value._id) }}"><i class="fas fa-edit"></i>Update</a>
+                        <a href="{{ url_for('delete_book', book_id=value._id) }}"><i class="far fa-trash-alt"></i>Delete</a>
+
+                    </td>
+
+                </tr>
+                {% endfor %} {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row text-center">
+    <div class="col-sm-12 mt-3">
+        <p class="center-align">
+            Add a Book ?
+            <a href="{{ url_for('admin_book_insert') }}" class="light-blue-text text-darken-4">Add A Book</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

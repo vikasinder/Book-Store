@@ -1,0 +1,29 @@
+{% extends "base.html" %} {% block content %}
+<div class="section-header text-center wow zoomIn mt-4" data-wow-delay="0.1s">
+
+    <h2 style="font-family: 'Engagement', cursive;
+    font-size: 32px;">{{category_table.category_name}}</h2>
+</div>
+
+<div class="row class-container mt-4">
+    {% for value in category_book %}
+    <div class="col-lg-4 col-md-6 col-sm-12 class-item filter-1 wow fadeInUp" data-wow-delay="0.0s">
+
+        <div class="class-wrap">
+
+            <div class="class-img  text-center ">
+                <h5 style="font-family: 'Engagement', cursive;
+                font-size: 32px;">{{ value.book_title}}</h5>
+                <img src="{{ url_for('static', filename= value.book_img ) }}" alt="Image" style="height: 150px;width: 150px;">
+            </div>
+            <div class="class-text">
+
+
+            </div>
+
+        </div>
+
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

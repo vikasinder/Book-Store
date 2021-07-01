@@ -1,0 +1,47 @@
+{% extends "base.html" %} {% block content %}
+
+<h2 class="mt-5 text-center">Register Here</h2>
+<form method="POST" action="{{ url_for('register') }}">
+    <div class="form-row mt-3">
+        <div class="form-group col-md-6">
+            <label for="username">Username</label>
+            <input type="text" name="username" class="form-control" id="username" required autocomplete="off">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="password">Password</label>
+            <input type="password" name="password" class="form-control" id="password" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" name="email" id="email" placeholder="xyz@hotmail.com" required autocomplete="off">
+    </div>
+    <div class="form-group">
+        <label for="address">Address</label>
+        <input type="text" class="form-control" id="address" name="address" placeholder="1234 Main St" required autocomplete="off">
+    </div>
+    <div class="form-group">
+        <label for="postal">Postal</label>
+        <input type="text" class="form-control" id="postal" name="postal" required autocomplete="off">
+    </div>
+
+    <div class="custom-control custom-switch">
+        <input type="checkbox" class="custom-control-input" id="customSwitch1" name="customSwitch1">
+        <label class="custom-control-label" for="customSwitch1">Is Admin</label>
+    </div>
+
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary">Register Here</button>
+    </div>
+</form>
+
+<div class="row text-center">
+    <div class="col-sm-12 mt-3 ">
+
+        <p class="center-align">
+            Registered ?
+            <a href="{{ url_for('login') }}" class="light-blue-text text-darken-4">Log In</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

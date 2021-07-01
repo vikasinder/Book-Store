@@ -1,0 +1,39 @@
+{% extends "base.html" %} {% block content %}
+<div class="row class-container">
+    <div class="col-12">
+        <div class="text-center my-3" style="font-family: 'Engagement', cursive;
+        font-size: 32px;">
+            <h2>List Of All Publishers </h2>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Publisher Name</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if session.role|lower=="admin" %} {% for value in publisher %}
+                <tr>
+                    <td><b>{{value.publisher_name}}</b></td>
+
+                    <td>
+                        <a href="{{ url_for('delete_publisher', publisher_id=value._id) }}"><i class="far fa-trash-alt"></i>Delete</a>
+
+                    </td>
+
+                </tr>
+                {% endfor %} {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row text-center">
+    <div class="col-sm-12 mt-3">
+        <p class="center-align">
+            Add a Publisher ?
+            <a href="{{ url_for('publisherregister') }}" class="light-blue-text text-darken-4">Add Publisher</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

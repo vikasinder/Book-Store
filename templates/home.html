@@ -1,0 +1,46 @@
+{% extends "base.html" %} {% block content %}
+<div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
+    <h2 style="font-family: 'Engagement', cursive;
+    font-size: 32px;"><em style="color: brown; font-size:80px;font-family:Verdana, Geneva, Tahoma, sans-serif; ">A</em> LL AVAILABLE BOOKS
+    </h2>
+</div>
+
+
+<div class="row class-container">
+    {% if books|length>0 %} {% for value in books %}
+    <div class="col-lg-4 col-md-6 col-sm-12 class-item filter-1 wow fadeInUp" data-wow-delay="0.0s">
+
+        <div class="class-wrap">
+
+            <div class="icon-box  text-center ">
+                <h5 style="font-family: 'Engagement', cursive;
+                font-size: 32px;">{{ value.book_title}}</h5>
+                {% if value.book_availabilty=="no" %}
+                <img src="{{ url_for('static', filename= value.book_img ) }}" alt="Image" title="Not Avilable" style="height: 150px;width: 150px;">
+                <div class="text-block">
+                    <h4>Available Soon..</h4>
+
+                </div> {% else %}
+                <img src="{{ url_for('static', filename= value.book_img ) }}" alt="Image" style="height: 150px;width: 150px;"> {% endif%}
+                <div class="text-center mt-2">
+                    {% if session["role"]=="user" or session["role"]==null %}
+                    <a href="{{ url_for('seereviews', book_id=value._id) }}" style="font-family: 'Engagement', cursive;font-size: 22px;">See Reviews  </a>
+                    <a href="{{ url_for('postreview', book_id=value._id) }}" style="font-family: 'Engagement', cursive;font-size: 22px;"> / Post Review</a> {% else %}
+                    <a href="{{ url_for('seereviews', book_id=value._id) }}" style="font-family: 'Engagement', cursive;font-size: 22px;">See Reviews </a> {% endif %}
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    {% endfor %} {% else %}
+    <div text-align="center">
+        <h2 style="font-family: 'Engagement', cursive;
+    font-size: 32px; text-align: center; color: brown;">No Results Found
+        </h2>
+    </div>
+    {% endif %}
+</div>
+
+
+</div> {% endblock %}

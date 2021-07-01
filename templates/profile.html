@@ -1,0 +1,88 @@
+{% extends "base.html" %} {% block content %}
+
+
+
+<div class=" col-sm-12 class-item filter-1 wow fadeInUp" data-wow-delay="0.0s">
+    {% if session["role"]==null %}
+    <br><br><br><br><br>
+    <div class="row text-center mt-5">
+        <div class="col-sm-12 mt-3 ">
+            <h3 style="font-family: 'Engagement', cursive;
+            font-size: 42px;"> To Post Comment On Particular Book , You Have To First Logged In</h3>
+
+
+            <p class="center-align mt-5">
+                Registered ?
+                <a href="{{ url_for('login') }}" class="light-blue-text text-darken-4">Log In</a>
+            </p>
+        </div>
+    </div>
+    {% elif session["role"]=="admin" %}
+    <div>
+        <h2 class="text-center" style="font-family: 'Engagement', cursive;font-size: 32px;">Welcome : {{user.username}}</h2>
+    </div>
+
+
+    <div class="icon-box  text-center ">
+        <h5 style="font-family: 'Engagement', cursive;
+                                font-size: 32px;">Manage Books</h5>
+        <div class="text-center mt-2">
+            <a href="{{ url_for('managebooks') }}" style="font-family: 'Engagement', cursive;font-size: 22px;">Add Delete A book</a>
+        </div>
+    </div>
+    <div class="icon-box  text-center ">
+        <h5 style="font-family: 'Engagement', cursive;
+                                font-size: 32px;">Manage Publihsers</h5>
+        <div class="text-center mt-2">
+            <a href="{{ url_for('managepublisher') }}" style="font-family: 'Engagement', cursive;font-size: 22px;">Add Delete A Publisher</a>
+        </div>
+    </div>
+    <div class="icon-box  text-center ">
+        <h5 style="font-family: 'Engagement', cursive;
+                                font-size: 32px;">Manage Author</h5>
+        <div class="text-center mt-2">
+            <a href="{{ url_for('manageauthor') }}" style="font-family: 'Engagement', cursive;font-size: 22px;">Add Delete An Author</a>
+        </div>
+    </div>
+    <div class="icon-box  text-center ">
+        <h5 style="font-family: 'Engagement', cursive;
+                                font-size: 32px;">Manage Category</h5>
+        <div class="text-center mt-2">
+            <a href="{{ url_for('managecategory') }}" style="font-family: 'Engagement', cursive;font-size: 22px;">Add Delete A Category</a>
+        </div>
+    </div>
+    <div class="icon-box  text-center ">
+        <h5 style="font-family: 'Engagement', cursive;
+                                font-size: 32px;">Ckeck Book Reviews</h5>
+        <div class="text-center mt-2">
+            <a href="{{ url_for('manage_review') }}" style="font-family: 'Engagement', cursive;font-size: 22px;">Add Delete A Review</a>
+        </div>
+    </div>
+
+    {% elif session["role"]=="user" %}
+    <div class="class-wrap">
+        <div class="icon-box  text-center ">
+            <form method="POST" action="{{ url_for('postreview', book_id=updated._id) }}">
+                <h2 class="mt-5 text-center">Post Your Review</h2>
+                <img src="{{ url_for('static', filename= updated.book_img ) }}" alt="Image" style="height: 150px;width: 150px;">
+
+                <div class="form-group mt-5">
+                    <label for="review">Your Review</label>
+                    <textarea class="form-control" id="review" rows="3" name="review"></textarea>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+
+
+
+        </div>
+    </div>
+    {% endif %}
+
+</div>
+
+
+{% endblock %}
