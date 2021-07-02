@@ -1,6 +1,6 @@
 # Flask-PyMongo Milestone Project
 
-Live View Click Here ()
+Live View Click Here (http://completeonlinebookstore.herokuapp.com/home)
 
 Python- Python is used for web development.
 
