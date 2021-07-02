@@ -25,23 +25,35 @@
         <input type="text" class="form-control" id="postal" name="postal" required autocomplete="off">
     </div>
 
-    <div class="custom-control custom-switch">
-        <input type="checkbox" class="custom-control-input" id="customSwitch1" name="customSwitch1">
-        <label class="custom-control-label" for="customSwitch1">Is Admin</label>
-    </div>
 
+    {% if session["role"]=='admin' %}
+    <div class="text-center">
+        <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="customSwitch1" name="customSwitch1">
+            <label class="custom-control-label" for="customSwitch1">Is Admin</label>
+        </div>
+        <div class="col-sm-12 mt-3">
+            <p class="center-align">
+                Add New User ?
+                <a href="{{ url_for('adminregister') }}" class="light-blue-text text-darken-4">Add User</a>
+            </p>
+        </div>
+    </div>
+    {% else %}
     <div class="text-center">
         <button type="submit" class="btn btn-primary">Register Here</button>
     </div>
-</form>
+    {% endif %}
 
+</form>
+{% if session["role"]==null %}
 <div class="row text-center">
     <div class="col-sm-12 mt-3 ">
 
         <p class="center-align">
             Registered ?
-            <a href="{{ url_for('login') }}" class="light-blue-text text-darken-4">Log In</a>
+            <a href="{{ url_for('login') }}" class="light-blue-text text-darken-4 ">Log In</a>
         </p>
     </div>
 </div>
-{% endblock %}
+{% endif %} {% endblock %}
