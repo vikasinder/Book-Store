@@ -102,30 +102,6 @@ def register():
         if existing_user:
             flash("Username already exists")
             return redirect(url_for("register"))
-        register = {
-            "role": "user",
-            "username": request.form.get("username").lower(),
-            "password": generate_password_hash(request.form.get("password")),
-            "email": request.form.get("email").lower(),
-            "address": request.form.get("address").lower(),
-            "postal": request.form.get("postal").lower()
-
-        }
-        mongo.db.users.insert_one(register)
-        flash("Registration Successful!")
-
-        return render_template("login.html")
-    return render_template("register.html")
-
-
-@app.route("/adminregister")
-def adminregister():
-        existing_user = mongo.db.users.find_one(
-            {"username": request.form.get("username").lower()})
-
-        if existing_user:
-            flash("Username already exists")
-            return redirect(url_for("register"))
         user_role = "admin" if request.form.get("customSwitch1") else "user"
         register = {
             "role": user_role,
@@ -139,7 +115,7 @@ def adminregister():
         mongo.db.users.insert_one(register)
         flash("Registration Successful!")
 
-        return render_template("profile.html")
+        return render_template("login.html")
     return render_template("register.html")
 
 
