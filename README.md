@@ -12,7 +12,7 @@ Code Institute student template for Gitpod is used in this project. That have pr
 
 ### Built Using
 
-* [Pymongo](https://www.w3schools.com/python/python_mongodb_getstarted.asp)
+* [Python](https://www.w3schools.com/python/)
 * [MongoDB](https://www.w3schools.com/mongodb/)
 * [Bootstrap](https://www.w3schools.com/bootstarp/)
 * [Flask](https://www.w3schools.com/flask/)
